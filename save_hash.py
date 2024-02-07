@@ -1,9 +1,10 @@
+#!/usr/bin/python3
 import pickle
 import magic_card_detector as mcg
 
 
-card_detector = mcg.MagicCardDetector()
-card_detector.read_and_adjust_reference_images('../../MTG/Card_Images/LEA/')
+card_detector = mcg.MagicCardDetector('.')
+card_detector.read_and_adjust_reference_images('card_images/woe/')
 
 hlist = []
 for image in card_detector.reference_images:
@@ -12,5 +13,5 @@ for image in card_detector.reference_images:
     image.adjusted = None
     hlist.append(image)
 
-with open('alpha_reference_phash.dat', 'wb') as f:
+with open('woe_reference_phash.dat', 'wb') as f:
     pickle.dump(hlist, f)
